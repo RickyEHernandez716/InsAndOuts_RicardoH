@@ -1,40 +1,57 @@
-int bGValue = 25; 
-int rect1X = 540;
-int rect1Y = 150;
-int rect2X = 560;
-int rect2Y = 80;
+/*This processing sketch was made by Ricardo Hernandez. It is based off of 
+the design of the master sword from Legend of Zelda.*/
+
+//Initiate global values to be chnaged at will. 
+float bGValue = 25; 
+int bladeHiltX = 520, bladeHiltY = 150, bladeHiltW = 100, bladeHiltH = 20;
+int bladeHandleX = 557, bladeHandleY = 80, bladeHandleW = 25,  bladeHandleH = 80;
+float fillBlade = 145, fillBladeTip = 145;
+
+//Set up initializes the canvas when the file is opened. 
 void setup(){
+//Canvas size
 size(1080,720);
 }
 
+//Updates with every frame. 
 void draw() {
+//Backgroud color 
 background(bGValue); 
-if (mousePressed){
-  background(random(0,255));
-}
 
 
 //Blade
-fill(145);
-rect(mouseX,mouseY,20,300);
+fill(fillBlade);
+rect(560,160,20,300);
 //BladeTip
-fill(145);
+fill(fillBladeTip);
 triangle(560,460,580,460,570,490);
+//BladeHiltRightSide
+fill(0,0,255);
+rect(600,160,20,40);
+//BladeHiltLeftSide
+fill(0,0,255);
+rect(520,160,20,40);
 //BladeHilt
-fill(0);
-rect(rect1X,rect1Y,60,20);
+fill(0,0,255);
+rect(bladeHiltX,bladeHiltY,bladeHiltW,bladeHiltH);
+//BladeHandleEndFinish
+fill(0,0,255);
+rect(bladeHandleX,75,bladeHandleW,bladeHandleH);
 //BladeHandle
-fill(0);
-rect(rect2X,rect2Y,20,80);
-//HandleFinish
-fill(0);
-ellipse(570,75,30,30);
+fill(0,0,255);
+rect(bladeHandleX,bladeHandleY,bladeHandleW,bladeHandleH);
+//BladeHandleDiamondTopHalf
+fill(255,255,0);
+triangle(560,120,580,120,570,100);
+//BladeHandleDiamondBottomHalf
+fill(255,255,0);
+triangle(560,120,580,120,570,140);
 
-/*
-if (keyPressed){
-rect1X = random();
-rect1Y = random();
-rect2X = random();
-rect2Y = random();
-}*/
+
 }
+// When mouse is pressed, global values are given new random values between 0-255
+void mousePressed(){
+  bGValue = random(255);
+  fillBlade = random(255);
+  fillBladeTip = random(255);
+  }
