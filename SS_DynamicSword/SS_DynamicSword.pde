@@ -1,3 +1,5 @@
+//URGENT MESSAGE! If you are prone to photosensitivity, please click the mouse every 5-10 seconds to avoid the colors changing too fast!!!
+
 /*This processing sketch was made by Ricardo Hernandez. It is based off of 
 the design of the master sword from Legend of Zelda.*/
 
