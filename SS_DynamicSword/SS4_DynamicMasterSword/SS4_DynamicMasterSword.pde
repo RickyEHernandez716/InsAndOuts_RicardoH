@@ -14,14 +14,15 @@ int tri_x1TT =  30, tri_y1TT = 40, tri_x2TT = 40, tri_y2TT = 20, tri_x3TT = 50, 
 int tri_x1BR =  40, tri_y1BR = 60, tri_x2BR = 50, tri_y2BR = 40, tri_x3BR = 60, tri_y3BR = 60;
 float fillBlade = 145, fillBladeTip = 145;
 PImage forestImg; 
+PFont swordFont;
 
 //Set up initializes the canvas when the file is opened. 
 void setup(){
 //Canvas size
 size(1080,720);
 forestImg = loadImage("SwordForest.jpg");
- // }
-}
+swordFont = createFont("The Wild Breath of Zelda.otf", 32);
+ }
 
 
 //Updates with every frame.
@@ -30,6 +31,9 @@ void draw() {
 background(bGValue); 
 //Draw the Image 
 //image(forestImg,10,10);
+//Master Sword Text 
+textSize(32);
+text("Master Sword" 25, 60);
 //Triforce Symbol
 //bottom left  
 for(int x = 20; x < width; x +=50){
