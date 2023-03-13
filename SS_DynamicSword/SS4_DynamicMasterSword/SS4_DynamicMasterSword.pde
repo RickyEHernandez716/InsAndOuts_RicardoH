@@ -22,7 +22,7 @@ void setup(){
 size(1080,720);
 forestImg = loadImage("SwordForest.jpg");
 swordFont = createFont("The Wild Breath of Zelda.otf", 32);
- }
+}
 
 
 //Updates with every frame.
@@ -37,21 +37,21 @@ text("Master Sword" 25, 60);
 //Triforce Symbol
 //bottom left  
 for(int x = 20; x < width; x +=50){
-for(int y = 60; y < height; y +=50) 
+for(int y = 60; y < height; y +=50){ 
 triangle(x, y, x+10, y-20, x+20, y);
+}
 }
 //top triangle
 for(int x = 30; x < width; x +=50){
-for(int y = 40; y < height; y +=50) 
+for(int y = 40; y < height; y +=50){ 
 triangle(x, y, x+10, y-20, x+20, y);
-}  
+} } 
 //bottom right
 for(int x = 40; x < width; x +=50){
-for(int y = 60; y < height; y +=50) 
+for(int y = 60; y < height; y +=50){ 
 triangle(x, y, x+10, y-20, x+20, y);
 }  
-
-
+}
 //Added extra details for sword when key is pressed. 
 if (keyPressed){
 //Forest Iamge
