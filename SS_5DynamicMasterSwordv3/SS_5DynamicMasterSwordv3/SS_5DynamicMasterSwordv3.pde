@@ -16,46 +16,25 @@ float fillBlade = 145, fillBladeTip = 145;
 PImage forestImg; 
 PFont swordFont;
 
-//Set up initializes the canvas when the file is opened. 
+
 void setup(){
 //Canvas size
 size(1080,720);
+//BackgroundImage
 forestImg = loadImage("SwordForest.jpg");
 swordFont = createFont("The Wild Breath of Zelda.otf", 32);
 }
 
+void draw(){
+drawSword();
+drawTriforce();
 
-//Updates with every frame.
-void draw() {
-//Backgroud color 
-background(bGValue); 
-//Draw the Image 
-//image(forestImg,10,10);
-//Master Sword Text 
-textSize(32);
-text("Master Sword", 25, 60);
-//Triforce Symbol
-//bottom left  
-for(int x = 20; x < width; x +=50){
-for(int y = 60; y < height; y +=50){ 
-triangle(x, y, x+10, y-20, x+20, y);
-}
-}
-//top triangle
-for(int x = 30; x < width; x +=50){
-for(int y = 40; y < height; y +=50){ 
-triangle(x, y, x+10, y-20, x+20, y);
-} } 
-//bottom right
-for(int x = 40; x < width; x +=50){
-for(int y = 60; y < height; y +=50){ 
-triangle(x, y, x+10, y-20, x+20, y);
-}  
-}
-//Added extra details for sword when key is pressed. 
 if (keyPressed){
 //Forest Iamge
 image(forestImg,0,0);
+}
+
+drawSword(){
 //BladeHiltRightSide
 fill(0,0,255);
 rect(600,160,20,40);
@@ -64,14 +43,12 @@ fill(0,0,255);
 rect(520,160,20,40);
 //BladeHandle
 fill(0,0,255);
-rect(bladeHandleX,bladeHandleY,bladeHandleW,bladeHandleH);
-}
-
+rect(bladeHandleX,bladeHandleY,bladeHandleW,bladeHandleH)
 //Blade
-fill(fillBlade);
+fill(0,0,255);
 rect(560,160,20,300);
 //BladeTip
-fill(fillBladeTip);
+fill(0,0,225);
 triangle(560,460,580,460,570,490);
 //BladeHilt
 fill(0,0,255);
@@ -79,27 +56,24 @@ rect(bladeHiltX,bladeHiltY,bladeHiltW,bladeHiltH);
 //BladeHandleEndFinish
 fill(0,0,255);
 rect(bladeHandleX,75,bladeHandleW,bladeHandleH);
-
-if (keyPressed){
-//BladeHandleDiamondTopHalf
-fill(255,255,0);
-triangle(560,120,580,120,570,100);
-//BladeHandleDiamondBottomHalf
-fill(255,255,0);
-triangle(560,120,580,120,570,140);
-    }
-  }
-// When mouse is pressed, global values are given new random values between 0-255
-void mousePressed(){
-  bGValue = random(0,255);
-  fillBlade = random(0,255);
-  fillBladeTip = random(0,255);
-  }
-  
-/*void forestImgOnPress(){
-  while(keyPressed){
-  //Forest Image is being called to upper left hand corner of screen while key is pressed
-  image(forestImg,0,0);
-  }
 }
-*/
+
+drawTriforce(){
+//Triforce Symbol
+//bottom left  
+for(int x = 20; x < width; x +=50){
+for(int y = 60; y < height; y +=50) 
+triangle(x, y, x+10, y-20, x+20, y);
+}
+//top triangle
+for(int x = 30; x < width; x +=50){
+for(int y = 40; y < height; y +=50) 
+triangle(x, y, x+10, y-20, x+20, y);
+}  
+//bottom right
+for(int x = 40; x < width; x +=50){
+for(int y = 60; y < height; y +=50) 
+triangle(x, y, x+10, y-20, x+20, y);
+}
+
+}
