@@ -18,6 +18,12 @@ int whichImg = 0;
 PFont swordFont;
 //Creating State Variable Called scene. 
 int scene = 0; 
+//Create An Array Of Integers For Objects Moving On X Axis
+int[] xAxis = new int[10];
+//Create An Array Of Integers For Objects To Be Spawned On Y Axis
+int[] yAxis = new int[50];
+//Create Integer speed To Be Used To Set Speed For X Axis Objects
+int speed = 2;
 
 
 void setup(){
@@ -29,6 +35,13 @@ backgroundImg[1] = loadImage("FairyFountain.jpg");
 
 //Calls text to be loaded in draw
 swordFont = createFont("Triforce.ttf", 32);
+  
+//initializing the array with for loop and random numbers
+for (int i=0; i<xAxis.length; i++) {
+xAxis[i]= int(random(width));
+yAxis[i]= int (random(height));
+  }
+
 }
 
 void draw(){
@@ -38,7 +51,7 @@ if (scene == 1){
 }
 else
 if (scene == 2){
- //scene2 
+ scene2(); 
 }
 else
 if (scene == 3){
@@ -162,7 +175,7 @@ rect(520,160,20,40);
 
 void scene1(){  
 //draws the image with the variable backgroundImg  
-image(backgroundImg[0], 0, 0, 1080, 700);  
+image(backgroundImg[0], 0, 0, 1080, 720);  
 if(mousePressed){
 //***********************************************************************************
 triforce();
@@ -180,5 +193,53 @@ sword();
 
 void scene2(){
 //draws the image with the variable backgroundImg  
-image(backgroundImg[1], 0, 0, 1080, 700);  
+image(backgroundImg[1], 0, 0, 1080, 720);  
+//Call Faries 
+faries();
+moveableFairy();
+if(keyPressed){
+navi();
+}
+}
+
+
+/*
+The code used in fucntion faries was modified from 
+Demo4 Array Loops that is on the class github
+*/
+void faries(){
+//Draw Ellipses That Are Meant To Be Fariies 
+stroke(255,3,209);
+fill(255,185,242);
+for (int i=0; i<xAxis.length; i++) 
+ {
+   ellipse(xAxis[i]+speed, yAxis[i], 50, 50);
+   xAxis[i]+=speed;
+   
+   if (xAxis[i] + speed > width || xAxis[i] + speed < width) {
+      speed=-speed;
+    } else {
+      xAxis[i]+=speed;
+    }
+ }
+ 
+}
+
+void navi(){
+float x = random(width); 
+float y = random(height);
+stroke(119,168,245);
+fill(181,246,252);
+ellipse(x,y,50,50);
+//NaviText 
+fill(0);
+textFont(swordFont);
+textSize(26);
+text("Hey! Listen!" , x, y);
+}
+
+void moveableFairy(){
+stroke(255,3,209);
+fill(255,185,242);
+ellipse(mouseX,mouseY,50,50);
 }
