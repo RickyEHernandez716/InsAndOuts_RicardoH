@@ -16,6 +16,8 @@ PImage[] backgroundImg = new PImage[2];
 int whichImg = 0;
 //Processing Font Variable Holding Value of swordFont
 PFont swordFont;
+//Processing Font Variable Holding Value of oldManFont
+PFont oldManFont;
 //Creating State Variable Called scene. 
 int scene = 0; 
 //Create An Array Of Integers For Objects Moving On X Axis
@@ -24,6 +26,13 @@ int[] xAxis = new int[10];
 int[] yAxis = new int[50];
 //Create Integer speed To Be Used To Set Speed For X Axis Objects
 int speed = 2;
+//Variables used in navi function.
+float x = 100; 
+float y = 100;
+//Variables Used for RGB Fill Values
+float r = 0;
+float g = 0;
+float b = 0;
 
 
 void setup(){
@@ -35,6 +44,9 @@ backgroundImg[1] = loadImage("FairyFountain.jpg");
 
 //Calls text to be loaded in draw
 swordFont = createFont("Triforce.ttf", 32);
+
+//Calls text to be loaded in draw
+oldManFont = createFont("nintendo-nes-font.ttf", 32);
   
 //initializing the array with for loop and random numbers
 for (int i=0; i<xAxis.length; i++) {
@@ -55,7 +67,7 @@ if (scene == 2){
 }
 else
 if (scene == 3){
- //scene3 
+ scene3(); 
  println(scene);
 }
 
@@ -197,9 +209,7 @@ image(backgroundImg[1], 0, 0, 1080, 720);
 //Call Faries 
 faries();
 moveableFairy();
-if(keyPressed){
 navi();
-}
 }
 
 
@@ -226,15 +236,13 @@ for (int i=0; i<xAxis.length; i++)
 }
 
 void navi(){
-float x = random(width); 
-float y = random(height);
 stroke(119,168,245);
 fill(181,246,252);
 ellipse(x,y,50,50);
 //NaviText 
 fill(0);
 textFont(swordFont);
-textSize(26);
+textSize(32);
 text("Hey! Listen!" , x, y);
 }
 
@@ -242,4 +250,115 @@ void moveableFairy(){
 stroke(255,3,209);
 fill(255,185,242);
 ellipse(mouseX,mouseY,50,50);
+}
+
+void scene3(){
+boarders();
+fire();
+oldMan();
+moveablePlayer();
+if (mousePressed){
+itsDangerousToGoAlone();
+bitSword();
+  }
+}
+
+void boarders(){
+noStroke();  
+//BoarderColors
+fill(245,98,49);
+//LeftBoarder
+rect(0,0,150,720);
+//RightBoarder
+rect(930,0,150,720);
+//LeftBottom;
+rect(0,670,300,100);
+//RightBottom
+rect(780,670,300,100);
+}
+
+void fire(){
+//BaseColors
+fill(106,67,54);
+//LeftSideFireBases
+square(300,200,50);
+square(300,350,50);
+square(300,500,50);
+//RightSideFireBases
+square(725,200,50);
+square(725,350,50);
+square(725,500,50);
+//FireColor
+fill(r,g,b);
+//FireLeftSide
+triangle(300,200,325,185,350,200);
+triangle(300,350,325,335,350,350);
+triangle(300,500,325,485,350,500);
+//FireLeftSide
+triangle(725,200,750,185,775,200);
+triangle(725,350,750,335,775,350);
+triangle(725,500,750,485,775,500);
+if (mousePressed){
+    r=247;
+    g=48;
+    b=7;
+  } 
+  else 
+  {
+    r=0;
+    g=0;
+    b=0;
+  }
+}
+
+void oldMan(){
+//BodyColor
+fill(247,164,7);
+//Body
+rect(530,100,40,80);
+//Arms
+//LeftSide
+rect(515,100,20,40);
+//RightSide
+rect(565,100,20,40);
+//SkinColor
+fill(247,223,177);
+//Head
+rect(540,90,20,20);
+//Hands
+//Left
+rect(520,140,10,10);
+//Right
+rect(570,140,10,10);
+}
+
+void bitSword(){
+  //SwordHandle
+fill(100,80,42);
+rect(546,255,8,15);  
+//SwordBlade
+fill(165);
+rect(545,225,10,35);
+}
+
+void itsDangerousToGoAlone(){
+//OldManText 
+fill(255);
+textFont(oldManFont);
+textSize(23);
+text("It's dangerous to go alone!", 240, 50);
+text("Take This!", 450, 80);
+}
+
+void moveablePlayer(){
+stroke(0);
+fill(31,240,57);
+ellipse(mouseX,mouseY,50,50);
+}
+
+void keyPressed(){
+if (key == 'n'){
+  x = random(width);
+  y = random(height);
+  }
 }
