@@ -195,6 +195,8 @@ masterSwordAwaken();
 swordText();
 //***********************************************************************************
 }
+instructions();
+instructionsText1();
 //Calls columns
 columns();
 //Calls rocks
@@ -210,6 +212,8 @@ image(backgroundImg[1], 0, 0, 1080, 720);
 faries();
 moveableFairy();
 navi();
+instructions();
+instructionsText2();
 }
 
 
@@ -257,6 +261,8 @@ boarders();
 fire();
 oldMan();
 moveablePlayer();
+instructions();
+instructionsText3();
 if (mousePressed){
 itsDangerousToGoAlone();
 bitSword();
@@ -354,6 +360,44 @@ void moveablePlayer(){
 stroke(0);
 fill(31,240,57);
 ellipse(mouseX,mouseY,50,50);
+}
+
+void instructions(){
+fill(255);
+rect(340,600,400,100);
+}
+
+void instructionsText1(){
+//OldManText 
+fill(0);
+textFont(oldManFont);
+textSize(12);
+text("You have found the master sword!", 355, 620);
+text("Click the mouse to awaken it!", 360, 640);
+text("Press '1' '2' or '3' to visit ", 360, 660);
+text("different scenes!", 360, 680); 
+}
+
+void instructionsText2(){
+//OldManText 
+fill(0);
+textFont(oldManFont);
+textSize(12);
+text("Move the fairy with the mouse!", 360, 620);
+text("Navi is popping up all over!", 360, 640);
+text("Press the N key to see where", 360, 660);
+text("She'll be next!", 360, 680); 
+}
+
+void instructionsText3(){
+//OldManText 
+fill(0);
+textFont(oldManFont);
+textSize(12);
+text("Move Link by moving the mouse!", 360, 620);
+text("The old man has something to ", 360, 640);
+text("give you. Click on the mouse to see!", 360, 660);
+text("see!", 360, 680); 
 }
 
 void keyPressed(){
