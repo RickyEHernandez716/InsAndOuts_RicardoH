@@ -1,10 +1,5 @@
 /*
-Reads values from serial port, written to the port by Arduino.
- The size of an ellipse changes according to the serial values.
- Must assign the correct port, see instructions below!
- */
-
-import processing.serial.*; //imports Serial library from Processing
+This Short study was modified from the demo code making the ellipse bigger or smaller
 
 Serial myPort; // creates object from Serial class
 int val=0; // creates variable for data coming from serial port
@@ -22,12 +17,13 @@ void setup() {
   String portName = Serial.list()[0]; //change the number in the [] for the port you need
   myPort = new Serial(this, portName, 9600);
 }
-
 void draw() {
   if ( myPort.available() > 0) { // If data is available,
     val = myPort.read(); // read it and store it in val
   }
-  
+ 
+//original code using val to determine if the value of the potentiometer is within 
+//the right range to display the trianlges to make the Triforce. 
 if (val > 0 && val <  85){
 //bottom left  
 fill(237,234,127);
@@ -54,11 +50,3 @@ triangle(x, y, x+10, y-20, x+20, y);
   }
   } 
 }
-
-/*
-  //draws an ellipse that grows and shrinks in relation to val
-  background(255);
-  fill (0);
-  ellipse (width/2, height/2, val, val);
-  println (val); //prints to Processing console
-*/
