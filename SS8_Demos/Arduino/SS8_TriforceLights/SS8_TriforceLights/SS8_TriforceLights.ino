@@ -12,6 +12,7 @@ const int LED3 = 8; // variable for which pin
 void setup() {
   pinMode(LED1, OUTPUT); // set pin as output
   pinMode(LED2, OUTPUT); // set pin as output
+  pinMode(LED3, OUTPUT); 
   Serial.begin(9600); // Start serial communication at 9600 bps
 }
 
@@ -40,7 +41,7 @@ void loop() {
     digitalWrite(LED2, LOW); // 
     digitalWrite(LED3, HIGH);
   }
-  else if ( val == 255) { // If 2 received
+  else if ( val == 255) { // 
     digitalWrite(LED1, HIGH); // 
     digitalWrite(LED2, HIGH); // 
     digitalWrite(LED3, HIGH);
