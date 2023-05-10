@@ -9,7 +9,7 @@ trash[i] = new Shapes();
 
 void draw(){
 background(0);
-for(int i = 0; i < trash.length; i++){
+for(int i = 0; i < trash.length; i= i+1){
 trash[i].spawnTrash();
 trash[i].moveTrash();
   }
