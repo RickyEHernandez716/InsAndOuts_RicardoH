@@ -1,3 +1,8 @@
+//This piece of code (lines 2-5) is borrowed from the Short Studies to connect to Arduino
+int val=0;
+import processing.serial.*;  //import Serial library
+Serial myPort;  // create object from Serial class
+
 Trash[]  trash  = new Trash[10];
 Trash2[] trash2 = new Trash2[10];
 Trash3[] trash3 = new Trash3[10];
@@ -10,6 +15,11 @@ Player player;
 
 void setup(){
 size(2000,1000);
+
+//set up Serial communication
+printArray(Serial.list()); // prints port list to the console
+String portName = Serial.list()[0]; //change to match your port
+myPort = new Serial(this, portName, 9600); //initialize Serial communication at 9600 baud
 
 //Array One Set Up 
 for(int i = 0; i < trash.length; i++){
