@@ -1,4 +1,4 @@
-public class Shapes {
+class Shapes {
 
 public int x; 
 public int y;
