@@ -1,3 +1,4 @@
+import processing.serial.*;
 class Player {
 
 public int x; 
@@ -16,25 +17,27 @@ rect(x, y, 50, 50);
   }
 
 void movePlayer(){
-if(buttonUp == HIGH){
+if ( myPort.available() > 0) { // If data is available,
+bState = myPort.read(); // read it and store it in val
+if(bState == 'U'){
   x = x - 5;
   } else 
-if(buttonForward == HIGH){
+if(bState == 'F'){
   y = y - 5;
   } else
-if(buttonDown == HIGH){
+if(bState == 'D'){
   y = y + 5;
   } 
  }  
 }
 
-void pushPlayerBack(){
+/*void pushPlayerBack(){
 if(shape.x < x && shape.y == y){
   x = x + 5;
   } else
   {
   x = x - 5;
   }
-}
+}*/
 
 }

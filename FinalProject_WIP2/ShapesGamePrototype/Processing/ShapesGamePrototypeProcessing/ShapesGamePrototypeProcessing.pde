@@ -1,6 +1,5 @@
 import processing.serial.*;  //import Serial library
 Serial myPort; // creates object from Serial class
-int val=0; // creates variable for data coming from serial port
 
 //Set pins to variables to be read by arduino
 public int buttonUp = 2; //Stores Serial Data For First Button
@@ -33,6 +32,7 @@ player = new Player();
 
 void draw(){
 background(155);
+println(bState);
 
 if ( myPort.available() > 0) { // If data is available,
 bState = myPort.read(); // read it and store it in bState
@@ -46,6 +46,6 @@ trash[i].moveTrash();
 
 player.spawnPlayer();
 player.movePlayer();
-player.pushPlayerBack();
+//player.pushPlayerBack();
 
 }
