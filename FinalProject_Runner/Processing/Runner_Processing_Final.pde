@@ -249,10 +249,8 @@ while ( myPort.available() > 0) { // If data is available,
      yPlayer = yPlayer + .5; 
      //hPlayer = hPlayer + 1; 
      println(3);
-    } else 
-    if (val == 4){
-     println(4);
-    } else {
+    } 
+    else {
     println(0);
  }
 }
